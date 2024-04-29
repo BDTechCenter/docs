@@ -1,17 +1,23 @@
-endi:
-  name: Endilie Yacop Sucipto
-  title: Maintainer of Docusaurus
-  url: https://github.com/endiliey
-  image_url: https://github.com/endiliey.png
+beck:
+  name: Luís Beck
+  title: Head of BackEnd & DevOps
+  url: https://github.com/LuisHBeck
+  image_url: https://github.com/LuisHBeck.png
 
-yangshun:
-  name: Yangshun Tay
-  title: Front End Engineer @ Facebook
-  url: https://github.com/yangshun
-  image_url: https://github.com/yangshun.png
+torres:
+  name: Raphael Torres
+  title: BackEnd Developer & Agile Master
+  url: https://github.com/raphavtorres
+  image_url: https://github.com/raphavtorres.png
 
-slorber:
-  name: Sébastien Lorber
-  title: Docusaurus maintainer
-  url: https://sebastienlorber.com
-  image_url: https://github.com/slorber.png
+felipe:
+  name: Luís Felipe
+  title: Head of FrontEnd
+  url: https://github.com/flepsz
+  image_url: https://github.com/flepsz.png
+
+pedrinho:
+  name: João Pedro
+  title: Head of QA & FrontEnd Developer
+  url: https://github.com/joaoP-ribeiro
+  image_url: https://github.com/joaoP-ribeiro.png
