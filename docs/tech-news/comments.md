@@ -37,3 +37,12 @@ Endpoint `/comments/{id}/upvote`
 Type: Header
 
     Authorization: Bearer token (azure)
+
+
+### DELETE comment
+
+Endpoint: `/comments/{newsId}`
+
+Type: Header
+
+    Authorization: Bearer token (azure)
