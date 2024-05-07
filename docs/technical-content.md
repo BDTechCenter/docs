@@ -7,6 +7,7 @@ sidebar_position: 1
 ## Backend
 
 - Architecture:
+    - Java SpringBoot
     - Our backend was developed using microservices design
     - Divided in 4 components: discovery service, api gateway, auth server and service
         - Discovery service using Eureka server for clients application registration
