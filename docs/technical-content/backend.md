@@ -1,10 +1,8 @@
 ---
-sidebar_position: 1
+sidebar_position: 2
 ---
 
-# Technical content
-
-## Backend
+# Backend
 
 - Architecture:
     - Java SpringBoot
