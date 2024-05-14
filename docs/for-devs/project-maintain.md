@@ -94,3 +94,93 @@ public class SecurityConfig {
 
 }
 ```
+
+### Dev rules
+
+#### SRP (Single Responsibility Principle)
+
+In the development of this project we followed and applied some of the SOLID concepts.
+Let's give a practical example of this application with the concept of SRP for API development.
+
+##### Controller
+```java
+@RestController
+@RequestMapping("/example")
+public class ExampleController {
+
+    @Autowired
+    private ExampleService exampleService;
+
+    @PostMapping("/user")
+    public ResponseEntity<UserDto> saveUserExample(
+            @AuthenticationPrincipal Jwt tokenJWT
+    ) {
+        UserDto user = exampleService.saveUserToDB(tokenJWT);
+        return ResponseEntity.ok(user);
+    }
+}
+```
+> Note that the control class injects only the ``service`` class and that class calls your respective function to perform the db transaction.
+
+#### Service
+```java
+@Service
+public class ExampleService {
+
+    @Autowired
+    private ExampleRepository exampleRepository;
+
+    public UserDto saveUserToDB(Jwt tokenJWT) {
+        UserDto userDto = new UserDto(tokenJWT);
+        UserExample user = new UserExample(userDto);
+        exampleRepository.save(user);
+
+        return userDto;
+    }
+}
+```
+> Here is the ``service`` class implementation example. This class who must receive the injection of the ``repository`` class for the db transaction.
+
+If you need to use auxiliary functions within the service class, create a Handler class and inject it into the service
+
+
+#### Exception Handler (HTTP codes)
+Create your own exceptions to use within validations and treat the http code returned when launching this exception
+
+##### Custom Exception
+```java
+public class ExampleException extends RuntimeException{
+    public ExampleException(String message) {
+        super(message);
+    }
+
+    public ExampleException() {
+        super("Default message");
+    }
+}
+```
+> You can use different constructors
+
+##### Error Handler
+```java
+@RestControllerAdvice
+public class ErrorHandler {
+
+    @ExceptionHandler(EntityNotFoundException.class)
+    public ResponseEntity error404Handler() {
+        return ResponseEntity.notFound().build();
+    }
+
+    @ExceptionHandler(ExampleException.class)
+    public ResponseEntity<ValidationErrorData> exampleExceptionHandler(
+        ExampleException exception
+    ) {
+        return ResponseEntity.status(HttpStatus.CONFLICT)
+            .body(new ValidationErrorData(
+                "some field", exception.getMessage()
+            )
+        );
+    }
+}
+```
+> Handle each of the possible exceptions thrown
