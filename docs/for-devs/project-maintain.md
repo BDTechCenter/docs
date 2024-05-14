@@ -161,6 +161,11 @@ public class ExampleException extends RuntimeException{
 ```
 > You can use different constructors
 
+The above file need to be placed at directory:
+- infra
+    - exception
+        - validation
+
 ##### Error Handler
 ```java
 @RestControllerAdvice
@@ -184,3 +189,8 @@ public class ErrorHandler {
 }
 ```
 > Handle each of the possible exceptions thrown
+
+The above file need to be placed at directory:
+- infra
+    - exception
+        - error
