@@ -85,8 +85,8 @@ const config: Config = {
           title: 'Docs',
           items: [
             {
-              label: 'Tutorial',
-              to: '/docs/intro',
+              label: 'docs',
+              to: '/docs/technical-content/software-requirements',
             },
           ],
         },
