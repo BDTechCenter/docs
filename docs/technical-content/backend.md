@@ -16,11 +16,11 @@ sidebar_position: 2
     - Architeture Proposal:
         ![Software Architeture Proposal](./img/SoftwareArchitectureDiagram.drawio.png)
 
-    - Dependencies: 
-        - Java 17
-        - SpringBoot 3.2.3
-        - Spring Cloud 2023.0.0
-        - Eureka Server / Client
-        - Postgres 16
-        - Spring-Dotenv 4.0.0
+- Stack: 
+    - Java 17
+    - SpringBoot 3.2.3
+    - Spring Cloud 2023.0.0
+    - Eureka Server / Client
+    - Postgres 16
+    - Spring-Dotenv 4.0.0
     
