@@ -19,17 +19,17 @@ different tabs.
 
 ## Features
 
-### Tech News
+### Tech Articles
 Allows all Bosch users
-view and comment on news related to new
-market technologies, BD applications and news in the area.
+view and comment on articles related to new
+market technologies, BD applications and article in the area.
 For BD employees or those with administrative access, you have the
-news creation and control function.
+articles creation and control function.
 
 ### Tech Radar
 Allows all Bosch users
 view a radar with the technologies that “will impact the
 Bosch”, “are being studied by the company” and which “are in
-use”, in addition to each news item having documentation. For
+use”, in addition to each article item having documentation. For
 BD employees or with administrative access, has the
-news creation and control function.
+articles creation and control function.

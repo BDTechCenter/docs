@@ -5,7 +5,7 @@ import type * as Preset from '@docusaurus/preset-classic';
 const config: Config = {
   title: 'BDTechCenter',
   tagline: 'Bosch Digital technology centralization platform',
-  favicon: 'img/logo.ico',
+  favicon: 'img/logo.png',
 
   // Set the production url of your site here
   url: 'http://localhost:3000',
@@ -61,7 +61,7 @@ const config: Config = {
       title: 'BDTechCenter',
       logo: {
         alt: 'BDTechCenter Logo',
-        src: 'img/logo.svg',
+        src: 'img/logo.png',
       },
       items: [
         {
