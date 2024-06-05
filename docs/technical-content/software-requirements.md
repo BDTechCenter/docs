@@ -26,9 +26,9 @@ articles creation and control function.
 Allows all Bosch users
 view a radar with the technologies that “will impact the
 Bosch”, “are being studied by the company” and which “are in
-use”, in addition to each news item having documentation. For
+use”, in addition to each article item having documentation. For
 BD employees or with administrative access, has the
-news creation and control function.
+article creation and control function.
 
 
 ## Requirements Description
@@ -48,17 +48,17 @@ news creation and control function.
         recently added or updated, or is the same as older
         of a week.
 
-- News page:
-    - The website must display a page with a news preview through
+- Articles page:
+    - The website must display a page with a article preview through
         of cards.
-    - Users should be able to filter news by tags and name
-        of the news.
-    - Users should be able to click on the news card and be
+    - Users should be able to filter article by tags and name
+        of the article.
+    - Users should be able to click on the article card and be
         directed to a page to read it.
 
 - Comments and rating:
-    - Users must be able to comment on news
-    - Users must be able to “upvote” the news.
+    - Users must be able to comment on article
+    - Users must be able to “upvote” the article.
 
 - Link to Bosch Tube:
     - Users must be able to access Bosch Tube (Bosch videos platforms)
@@ -70,16 +70,16 @@ news creation and control function.
     - Users must be able to create and update the properties of
         quadrants
 
-- Admin actions for TechNews:
-    - Users must be able to create and update their own news and
+- Admin actions for TechArticle:
+    - Users must be able to create and update their own articles and
         from other users.
 
 - Actions by BD collaborators for TechRadar:
     - Users must be able to create and update documentation for
         technologies they added.
 
-- Actions by BD collaborators for TechNews:
-    - Users must be able to create and update their own news
+- Actions by BD collaborators for TechArticles:
+    - Users must be able to create and update their own articles
 
 
 ### Non-Functional Requirements
