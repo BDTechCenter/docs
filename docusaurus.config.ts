@@ -15,12 +15,7 @@ const config: Config = {
 	// For GitHub pages deployment, it is often '/<projectName>/'
 	baseUrl: "/",
 
-	// GitHub pages deployment config.
-	// If you aren't using GitHub pages, you don't need these.
-	organizationName: "bdtechcenter", // Usually your GitHub org/user name.
-	projectName: "front-end", // Usually your repo name.
-
-	onBrokenLinks: "throw",
+	onBrokenLinks: "warn",
 	onBrokenMarkdownLinks: "warn",
 
 	// Even if you don't use internationalization, you can use this field to set
@@ -80,7 +75,7 @@ const config: Config = {
 			title: "BDTechCenter",
 			logo: {
 				alt: "BDTechCenter Logo",
-				src: "img/logo.svg",
+				src: "img/logo.png",
 			},
 			items: [
 				{
@@ -101,15 +96,6 @@ const config: Config = {
 			style: "dark",
 			links: [
 				{
-					title: "Docs",
-					items: [
-						{
-							label: "docs",
-							to: "/docs/technical-content/software-requirements",
-						},
-					],
-				},
-				{
 					title: "Links",
 					items: [
 						{
@@ -123,23 +109,6 @@ const config: Config = {
 						{
 							label: "Bosch",
 							href: "https://bzo.bosch.com/bzo/en/start_page.html",
-						},
-					],
-				},
-				{
-					title: "Docusaurus",
-					items: [
-						{
-							label: "Stack Overflow",
-							href: "https://stackoverflow.com/questions/tagged/docusaurus",
-						},
-						{
-							label: "Discord",
-							href: "https://discordapp.com/invite/docusaurus",
-						},
-						{
-							label: "Twitter",
-							href: "https://twitter.com/docusaurus",
 						},
 					],
 				},

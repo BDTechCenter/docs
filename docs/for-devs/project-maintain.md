@@ -5,7 +5,7 @@ sidebar_position: 1
 # Project Maintain
 
 ## How can you contribute?
-As was explained in [project architeture](../technical-content.md#backend) 
+As was explained in [project architeture](../technical-content/backend.md) 
 your backend was developed using microservices design. 
 
 And luckily for those who will contribute to this project, 
