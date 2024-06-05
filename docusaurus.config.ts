@@ -2,6 +2,7 @@ import { themes as prismThemes } from "prism-react-renderer";
 import type { Config } from "@docusaurus/types";
 import type * as Preset from "@docusaurus/preset-classic";
 import type { ScalarOptions } from "@scalar/docusaurus";
+import configSwagger from "./static/config.json";
 
 const config: Config = {
 	title: "BDTechCenter",
@@ -9,7 +10,7 @@ const config: Config = {
 	favicon: "img/logo.ico",
 
 	// Set the production url of your site here
-	url: "http://localhost:3000",
+	url: "http://localhost:7777",
 	// Set the /<baseUrl>/ pathname under which your site is served
 	// For GitHub pages deployment, it is often '/<projectName>/'
 	baseUrl: "/",
@@ -59,12 +60,13 @@ const config: Config = {
 		[
 			"@scalar/docusaurus",
 			{
-				label: "Tech News",
-				route: "/tech-news",
+				id: "bdtc/api-reference",
+				label: "API Reference",
+				route: "/api-reference",
 				configuration: {
 					theme: "none",
 					spec: {
-						url: "http://10.234.84.58:8766/tech-news/v3/api-docs",
+						content: configSwagger,
 					},
 				},
 			} as ScalarOptions,

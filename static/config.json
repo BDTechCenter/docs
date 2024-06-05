@@ -1,0 +1,2768 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "BD TC Combine API's",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://10.234.84.58:8766/",
+      "description": "Generated server url"
+    }
+  ],
+  "paths": {
+    "/comments/{articleId}": {
+      "post": {
+        "tags": [
+          "Comments Controller"
+        ],
+        "summary": "Create comment for article",
+        "operationId": "createComment",
+        "parameters": [
+          {
+            "name": "articleId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "required": [
+                  "comment"
+                ],
+                "type": "object",
+                "properties": {
+                  "comment": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "format": "uuid"
+                    },
+                    "newsId": {
+                      "type": "string",
+                      "format": "uuid"
+                    },
+                    "author": {
+                      "type": "string"
+                    },
+                    "publicationDate": {
+                      "type": "string"
+                    },
+                    "comment": {
+                      "type": "string"
+                    },
+                    "upVotes": {
+                      "type": "integer",
+                      "format": "int32"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/articles": {
+      "post": {
+        "tags": [
+          "Articles Controller"
+        ],
+        "summary": "Create a new article",
+        "description": "For this transaction you need the role 'BDUSER'",
+        "operationId": "createNews",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "required": [
+                  "body",
+                  "title"
+                ],
+                "type": "object",
+                "properties": {
+                  "title": {
+                    "type": "string"
+                  },
+                  "body": {
+                    "type": "string"
+                  },
+                  "tags": {
+                    "uniqueItems": true,
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "image": {
+                    "type": "string",
+                    "format": "binary"
+                  },
+                  "isPublished": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "format": "uuid"
+                    },
+                    "author": {
+                      "type": "string"
+                    },
+                    "creationDate": {
+                      "type": "string"
+                    },
+                    "updateDate": {
+                      "type": "string"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "body": {
+                      "type": "string"
+                    },
+                    "tags": {
+                      "uniqueItems": true,
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "views": {
+                      "type": "integer",
+                      "format": "int64"
+                    },
+                    "upVotes": {
+                      "type": "integer",
+                      "format": "int32"
+                    },
+                    "imageUrl": {
+                      "type": "string"
+                    },
+                    "isPublished": {
+                      "type": "boolean"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/comments/{id}": {
+      "delete": {
+        "tags": [
+          "Comments Controller"
+        ],
+        "summary": "Delete a comment",
+        "description": "Only the author or user with 'ADMIN' role can delete a comment",
+        "operationId": "deleteComment",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "Comments Controller"
+        ],
+        "summary": "Update a comment",
+        "description": "Only the author or user with 'ADMIN' role can update a comment",
+        "operationId": "updateComment",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "required": [
+                  "comment"
+                ],
+                "type": "object",
+                "properties": {
+                  "comment": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "format": "uuid"
+                    },
+                    "newsId": {
+                      "type": "string",
+                      "format": "uuid"
+                    },
+                    "author": {
+                      "type": "string"
+                    },
+                    "publicationDate": {
+                      "type": "string"
+                    },
+                    "comment": {
+                      "type": "string"
+                    },
+                    "upVotes": {
+                      "type": "integer",
+                      "format": "int32"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/comments/{id}/upvote": {
+      "patch": {
+        "tags": [
+          "Comments Controller"
+        ],
+        "summary": "Add or remove a upvote to measure comment relevance",
+        "operationId": "addUpVoteToComment",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/articles/{id}": {
+      "get": {
+        "tags": [
+          "Articles Controller"
+        ],
+        "summary": "Get full article details based on id",
+        "operationId": "getNewsById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "format": "uuid"
+                    },
+                    "author": {
+                      "type": "string"
+                    },
+                    "creationDate": {
+                      "type": "string"
+                    },
+                    "updateDate": {
+                      "type": "string"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "body": {
+                      "type": "string"
+                    },
+                    "tags": {
+                      "uniqueItems": true,
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "views": {
+                      "type": "integer",
+                      "format": "int64"
+                    },
+                    "upVotes": {
+                      "type": "integer",
+                      "format": "int32"
+                    },
+                    "imageUrl": {
+                      "type": "string"
+                    },
+                    "isPublished": {
+                      "type": "boolean"
+                    },
+                    "alreadyUpVoted": {
+                      "type": "boolean"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "Articles Controller"
+        ],
+        "summary": "Update a article",
+        "description": "Only the author or user with 'ADMIN' role can update an article",
+        "operationId": "updateNews",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "title": {
+                    "type": "string"
+                  },
+                  "body": {
+                    "type": "string"
+                  },
+                  "tags": {
+                    "uniqueItems": true,
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "image": {
+                    "type": "string",
+                    "format": "binary"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "format": "uuid"
+                    },
+                    "author": {
+                      "type": "string"
+                    },
+                    "creationDate": {
+                      "type": "string"
+                    },
+                    "updateDate": {
+                      "type": "string"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "body": {
+                      "type": "string"
+                    },
+                    "tags": {
+                      "uniqueItems": true,
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "views": {
+                      "type": "integer",
+                      "format": "int64"
+                    },
+                    "upVotes": {
+                      "type": "integer",
+                      "format": "int32"
+                    },
+                    "imageUrl": {
+                      "type": "string"
+                    },
+                    "isPublished": {
+                      "type": "boolean"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/articles/{id}/upvote": {
+      "patch": {
+        "tags": [
+          "Articles Controller"
+        ],
+        "summary": "Add or remove a upvote to measure article relevance",
+        "description": "If you already upVoted the article, your upVote will be delete,\notherwise it will be created\n",
+        "operationId": "addUpVoteToNews",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/articles/{id}/publish": {
+      "patch": {
+        "tags": [
+          "Articles Controller"
+        ],
+        "summary": "Publish an archived article",
+        "description": "Only the author or user with 'ADMIN' role can publish an article",
+        "operationId": "publishNews",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "format": "uuid"
+                    },
+                    "author": {
+                      "type": "string"
+                    },
+                    "creationDate": {
+                      "type": "string"
+                    },
+                    "updateDate": {
+                      "type": "string"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "body": {
+                      "type": "string"
+                    },
+                    "tags": {
+                      "uniqueItems": true,
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "views": {
+                      "type": "integer",
+                      "format": "int64"
+                    },
+                    "upVotes": {
+                      "type": "integer",
+                      "format": "int32"
+                    },
+                    "imageUrl": {
+                      "type": "string"
+                    },
+                    "isPublished": {
+                      "type": "boolean"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/articles/{id}/archive": {
+      "patch": {
+        "tags": [
+          "Articles Controller"
+        ],
+        "summary": "Archive a published article",
+        "description": "Only the author or user with 'ADMIN' role can archive an article",
+        "operationId": "archiveNews",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "format": "uuid"
+                    },
+                    "author": {
+                      "type": "string"
+                    },
+                    "creationDate": {
+                      "type": "string"
+                    },
+                    "updateDate": {
+                      "type": "string"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "body": {
+                      "type": "string"
+                    },
+                    "tags": {
+                      "uniqueItems": true,
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "views": {
+                      "type": "integer",
+                      "format": "int64"
+                    },
+                    "upVotes": {
+                      "type": "integer",
+                      "format": "int32"
+                    },
+                    "imageUrl": {
+                      "type": "string"
+                    },
+                    "isPublished": {
+                      "type": "boolean"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/comments/{newsId}": {
+      "get": {
+        "tags": [
+          "Comments Controller"
+        ],
+        "summary": "Get comment details with number of upVotes",
+        "operationId": "getNewsComments",
+        "parameters": [
+          {
+            "name": "newsId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "pageable",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "page": {
+                  "minimum": 0,
+                  "type": "integer",
+                  "format": "int32"
+                },
+                "size": {
+                  "minimum": 1,
+                  "type": "integer",
+                  "format": "int32"
+                },
+                "sort": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "totalPages": {
+                      "type": "integer",
+                      "format": "int32"
+                    },
+                    "totalElements": {
+                      "type": "integer",
+                      "format": "int64"
+                    },
+                    "size": {
+                      "type": "integer",
+                      "format": "int32"
+                    },
+                    "content": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string",
+                            "format": "uuid"
+                          },
+                          "newsId": {
+                            "type": "string",
+                            "format": "uuid"
+                          },
+                          "author": {
+                            "type": "string"
+                          },
+                          "publicationDate": {
+                            "type": "string"
+                          },
+                          "comment": {
+                            "type": "string"
+                          },
+                          "upVotes": {
+                            "type": "integer",
+                            "format": "int32"
+                          },
+                          "alreadyUpVoted": {
+                            "type": "boolean"
+                          }
+                        }
+                      }
+                    },
+                    "number": {
+                      "type": "integer",
+                      "format": "int32"
+                    },
+                    "sort": {
+                      "type": "object",
+                      "properties": {
+                        "empty": {
+                          "type": "boolean"
+                        },
+                        "sorted": {
+                          "type": "boolean"
+                        },
+                        "unsorted": {
+                          "type": "boolean"
+                        }
+                      }
+                    },
+                    "pageable": {
+                      "type": "object",
+                      "properties": {
+                        "offset": {
+                          "type": "integer",
+                          "format": "int64"
+                        },
+                        "sort": {
+                          "type": "object",
+                          "properties": {
+                            "empty": {
+                              "type": "boolean"
+                            },
+                            "sorted": {
+                              "type": "boolean"
+                            },
+                            "unsorted": {
+                              "type": "boolean"
+                            }
+                          }
+                        },
+                        "pageNumber": {
+                          "type": "integer",
+                          "format": "int32"
+                        },
+                        "pageSize": {
+                          "type": "integer",
+                          "format": "int32"
+                        },
+                        "paged": {
+                          "type": "boolean"
+                        },
+                        "unpaged": {
+                          "type": "boolean"
+                        }
+                      }
+                    },
+                    "numberOfElements": {
+                      "type": "integer",
+                      "format": "int32"
+                    },
+                    "first": {
+                      "type": "boolean"
+                    },
+                    "last": {
+                      "type": "boolean"
+                    },
+                    "empty": {
+                      "type": "boolean"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/comments/me": {
+      "get": {
+        "tags": [
+          "Comments Controller"
+        ],
+        "summary": "Get comment based on author (logged user)",
+        "operationId": "getCommentsByAuthor",
+        "parameters": [
+          {
+            "name": "pageable",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "page": {
+                  "minimum": 0,
+                  "type": "integer",
+                  "format": "int32"
+                },
+                "size": {
+                  "minimum": 1,
+                  "type": "integer",
+                  "format": "int32"
+                },
+                "sort": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "totalPages": {
+                      "type": "integer",
+                      "format": "int32"
+                    },
+                    "totalElements": {
+                      "type": "integer",
+                      "format": "int64"
+                    },
+                    "size": {
+                      "type": "integer",
+                      "format": "int32"
+                    },
+                    "content": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string",
+                            "format": "uuid"
+                          },
+                          "newsId": {
+                            "type": "string",
+                            "format": "uuid"
+                          },
+                          "author": {
+                            "type": "string"
+                          },
+                          "publicationDate": {
+                            "type": "string"
+                          },
+                          "comment": {
+                            "type": "string"
+                          },
+                          "upVotes": {
+                            "type": "integer",
+                            "format": "int32"
+                          }
+                        }
+                      }
+                    },
+                    "number": {
+                      "type": "integer",
+                      "format": "int32"
+                    },
+                    "sort": {
+                      "type": "object",
+                      "properties": {
+                        "empty": {
+                          "type": "boolean"
+                        },
+                        "sorted": {
+                          "type": "boolean"
+                        },
+                        "unsorted": {
+                          "type": "boolean"
+                        }
+                      }
+                    },
+                    "pageable": {
+                      "type": "object",
+                      "properties": {
+                        "offset": {
+                          "type": "integer",
+                          "format": "int64"
+                        },
+                        "sort": {
+                          "type": "object",
+                          "properties": {
+                            "empty": {
+                              "type": "boolean"
+                            },
+                            "sorted": {
+                              "type": "boolean"
+                            },
+                            "unsorted": {
+                              "type": "boolean"
+                            }
+                          }
+                        },
+                        "pageNumber": {
+                          "type": "integer",
+                          "format": "int32"
+                        },
+                        "pageSize": {
+                          "type": "integer",
+                          "format": "int32"
+                        },
+                        "paged": {
+                          "type": "boolean"
+                        },
+                        "unpaged": {
+                          "type": "boolean"
+                        }
+                      }
+                    },
+                    "numberOfElements": {
+                      "type": "integer",
+                      "format": "int32"
+                    },
+                    "first": {
+                      "type": "boolean"
+                    },
+                    "last": {
+                      "type": "boolean"
+                    },
+                    "empty": {
+                      "type": "boolean"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/articles/preview": {
+      "get": {
+        "tags": [
+          "Articles Controller"
+        ],
+        "summary": "Get published articles",
+        "operationId": "getNewsPreview",
+        "parameters": [
+          {
+            "name": "sortBy",
+            "in": "query",
+            "description": "choose between: 'view' (most viewed), 'latest' and 'relevance' (based on upVotes)",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "latest"
+            }
+          },
+          {
+            "name": "title",
+            "in": "query",
+            "description": "filter the articles by specific title",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": ""
+            }
+          },
+          {
+            "name": "tags",
+            "in": "query",
+            "description": "filter the articles by specific tags",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": ""
+            }
+          },
+          {
+            "name": "pageable",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "page": {
+                  "minimum": 0,
+                  "type": "integer",
+                  "format": "int32"
+                },
+                "size": {
+                  "minimum": 1,
+                  "type": "integer",
+                  "format": "int32"
+                },
+                "sort": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "totalPages": {
+                      "type": "integer",
+                      "format": "int32"
+                    },
+                    "totalElements": {
+                      "type": "integer",
+                      "format": "int64"
+                    },
+                    "size": {
+                      "type": "integer",
+                      "format": "int32"
+                    },
+                    "content": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string",
+                            "format": "uuid"
+                          },
+                          "updateDate": {
+                            "type": "string"
+                          },
+                          "title": {
+                            "type": "string"
+                          },
+                          "author": {
+                            "type": "string"
+                          },
+                          "views": {
+                            "type": "integer",
+                            "format": "int64"
+                          },
+                          "upVotes": {
+                            "type": "integer",
+                            "format": "int32"
+                          },
+                          "imageUrl": {
+                            "type": "string"
+                          },
+                          "isPublished": {
+                            "type": "boolean"
+                          }
+                        }
+                      }
+                    },
+                    "number": {
+                      "type": "integer",
+                      "format": "int32"
+                    },
+                    "sort": {
+                      "type": "object",
+                      "properties": {
+                        "empty": {
+                          "type": "boolean"
+                        },
+                        "sorted": {
+                          "type": "boolean"
+                        },
+                        "unsorted": {
+                          "type": "boolean"
+                        }
+                      }
+                    },
+                    "pageable": {
+                      "type": "object",
+                      "properties": {
+                        "offset": {
+                          "type": "integer",
+                          "format": "int64"
+                        },
+                        "sort": {
+                          "type": "object",
+                          "properties": {
+                            "empty": {
+                              "type": "boolean"
+                            },
+                            "sorted": {
+                              "type": "boolean"
+                            },
+                            "unsorted": {
+                              "type": "boolean"
+                            }
+                          }
+                        },
+                        "pageNumber": {
+                          "type": "integer",
+                          "format": "int32"
+                        },
+                        "pageSize": {
+                          "type": "integer",
+                          "format": "int32"
+                        },
+                        "paged": {
+                          "type": "boolean"
+                        },
+                        "unpaged": {
+                          "type": "boolean"
+                        }
+                      }
+                    },
+                    "numberOfElements": {
+                      "type": "integer",
+                      "format": "int32"
+                    },
+                    "first": {
+                      "type": "boolean"
+                    },
+                    "last": {
+                      "type": "boolean"
+                    },
+                    "empty": {
+                      "type": "boolean"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/articles/me": {
+      "get": {
+        "tags": [
+          "Articles Controller"
+        ],
+        "summary": "Get articles based on author",
+        "description": "Return the articles based on the logged user, by the JWT token",
+        "operationId": "getNewsBasedOnAuthor",
+        "parameters": [
+          {
+            "name": "sortBy",
+            "in": "query",
+            "description": "choose between 'published' and 'archived'",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "empty"
+            }
+          },
+          {
+            "name": "pageable",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "page": {
+                  "minimum": 0,
+                  "type": "integer",
+                  "format": "int32"
+                },
+                "size": {
+                  "minimum": 1,
+                  "type": "integer",
+                  "format": "int32"
+                },
+                "sort": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "totalPages": {
+                      "type": "integer",
+                      "format": "int32"
+                    },
+                    "totalElements": {
+                      "type": "integer",
+                      "format": "int64"
+                    },
+                    "size": {
+                      "type": "integer",
+                      "format": "int32"
+                    },
+                    "content": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string",
+                            "format": "uuid"
+                          },
+                          "updateDate": {
+                            "type": "string"
+                          },
+                          "title": {
+                            "type": "string"
+                          },
+                          "author": {
+                            "type": "string"
+                          },
+                          "views": {
+                            "type": "integer",
+                            "format": "int64"
+                          },
+                          "upVotes": {
+                            "type": "integer",
+                            "format": "int32"
+                          },
+                          "imageUrl": {
+                            "type": "string"
+                          },
+                          "isPublished": {
+                            "type": "boolean"
+                          }
+                        }
+                      }
+                    },
+                    "number": {
+                      "type": "integer",
+                      "format": "int32"
+                    },
+                    "sort": {
+                      "type": "object",
+                      "properties": {
+                        "empty": {
+                          "type": "boolean"
+                        },
+                        "sorted": {
+                          "type": "boolean"
+                        },
+                        "unsorted": {
+                          "type": "boolean"
+                        }
+                      }
+                    },
+                    "pageable": {
+                      "type": "object",
+                      "properties": {
+                        "offset": {
+                          "type": "integer",
+                          "format": "int64"
+                        },
+                        "sort": {
+                          "type": "object",
+                          "properties": {
+                            "empty": {
+                              "type": "boolean"
+                            },
+                            "sorted": {
+                              "type": "boolean"
+                            },
+                            "unsorted": {
+                              "type": "boolean"
+                            }
+                          }
+                        },
+                        "pageNumber": {
+                          "type": "integer",
+                          "format": "int32"
+                        },
+                        "pageSize": {
+                          "type": "integer",
+                          "format": "int32"
+                        },
+                        "paged": {
+                          "type": "boolean"
+                        },
+                        "unpaged": {
+                          "type": "boolean"
+                        }
+                      }
+                    },
+                    "numberOfElements": {
+                      "type": "integer",
+                      "format": "int32"
+                    },
+                    "first": {
+                      "type": "boolean"
+                    },
+                    "last": {
+                      "type": "boolean"
+                    },
+                    "empty": {
+                      "type": "boolean"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/quadrants": {
+      "get": {
+        "tags": [
+          "Quadrants Controller"
+        ],
+        "summary": "Get quadrants for radar view",
+        "operationId": "getQuadrants",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "name": {
+                        "type": "string"
+                      },
+                      "title": {
+                        "type": "string"
+                      },
+                      "color": {
+                        "type": "string"
+                      },
+                      "position": {
+                        "type": "integer",
+                        "format": "int32"
+                      },
+                      "description": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Quadrants Controller"
+        ],
+        "summary": "Create a quadrant",
+        "description": "Quadrants are represented by enums, use this notation:\nOnly one of each: FIRST_QUADRANT, SECOND_QUADRANT, THIRD_QUADRANT, FOURTH_QUADRANT\n\nOnly users with 'ADMIN' role can create quadrant\n",
+        "operationId": "createQuadrant",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "required": [
+                  "color",
+                  "name",
+                  "position",
+                  "quadrant",
+                  "title"
+                ],
+                "type": "object",
+                "properties": {
+                  "quadrant": {
+                    "type": "string",
+                    "enum": [
+                      "FIRST_QUADRANT",
+                      "SECOND_QUADRANT",
+                      "THIRD_QUADRANT",
+                      "FOURTH_QUADRANT"
+                    ]
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "title": {
+                    "type": "string"
+                  },
+                  "color": {
+                    "type": "string"
+                  },
+                  "position": {
+                    "type": "integer",
+                    "format": "int32"
+                  },
+                  "description": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "color": {
+                      "type": "string"
+                    },
+                    "position": {
+                      "type": "integer",
+                      "format": "int32"
+                    },
+                    "description": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/quadrants/multiple": {
+      "post": {
+        "tags": [
+          "Quadrants Controller"
+        ],
+        "summary": "Create multiple quadrants",
+        "description": "Create multiple quadrants all at once, passing a list of objects\nOnly users with 'ADMIN' role can create quadrants\n",
+        "operationId": "createMultipleQuadrants",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "required": [
+                    "color",
+                    "name",
+                    "position",
+                    "quadrant",
+                    "title"
+                  ],
+                  "type": "object",
+                  "properties": {
+                    "quadrant": {
+                      "type": "string",
+                      "enum": [
+                        "FIRST_QUADRANT",
+                        "SECOND_QUADRANT",
+                        "THIRD_QUADRANT",
+                        "FOURTH_QUADRANT"
+                      ]
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "color": {
+                      "type": "string"
+                    },
+                    "position": {
+                      "type": "integer",
+                      "format": "int32"
+                    },
+                    "description": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "name": {
+                        "type": "string"
+                      },
+                      "title": {
+                        "type": "string"
+                      },
+                      "color": {
+                        "type": "string"
+                      },
+                      "position": {
+                        "type": "integer",
+                        "format": "int32"
+                      },
+                      "description": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/items": {
+      "get": {
+        "tags": [
+          "Items Controller"
+        ],
+        "summary": "Get active items for radar view",
+        "operationId": "getItems",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string",
+                        "format": "uuid"
+                      },
+                      "flag": {
+                        "type": "string",
+                        "enum": [
+                          "CHANGED",
+                          "DEFAULT",
+                          "NEW"
+                        ]
+                      },
+                      "title": {
+                        "type": "string"
+                      },
+                      "ring": {
+                        "type": "string",
+                        "enum": [
+                          "HOLD",
+                          "OBSERVE",
+                          "TRIAL",
+                          "ADOPT"
+                        ]
+                      },
+                      "expectation": {
+                        "type": "string"
+                      },
+                      "quadrantId": {
+                        "type": "string"
+                      },
+                      "isActive": {
+                        "type": "boolean"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Items Controller"
+        ],
+        "summary": "Create radar item",
+        "description": "Rings and Expectation are represented by enums, use this notation:\nrings: HOLD, OBSERVE, TRIAL, ADOPT\nexpectation: UNKNOWN(\"-\"), ZERO_TWO(\"0 - 2\"), TWO_FIVE(\"2 - 5\"), FIVE_TEN(\"5 - 10\")\nOnly user with 'BDUSER' or 'ADMIN' role can create item\n",
+        "operationId": "createItem",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "required": [
+                  "expectation",
+                  "isActive",
+                  "quadrant",
+                  "ring",
+                  "title"
+                ],
+                "type": "object",
+                "properties": {
+                  "isActive": {
+                    "type": "boolean"
+                  },
+                  "title": {
+                    "type": "string"
+                  },
+                  "ring": {
+                    "type": "string",
+                    "enum": [
+                      "HOLD",
+                      "OBSERVE",
+                      "TRIAL",
+                      "ADOPT"
+                    ]
+                  },
+                  "expectation": {
+                    "type": "string",
+                    "enum": [
+                      "UNKNOWN",
+                      "ZERO_TWO",
+                      "TWO_FIVE",
+                      "FIVE_TEN"
+                    ]
+                  },
+                  "quadrant": {
+                    "type": "string",
+                    "enum": [
+                      "FIRST_QUADRANT",
+                      "SECOND_QUADRANT",
+                      "THIRD_QUADRANT",
+                      "FOURTH_QUADRANT"
+                    ]
+                  },
+                  "body": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "format": "uuid"
+                    },
+                    "flag": {
+                      "type": "string",
+                      "enum": [
+                        "CHANGED",
+                        "DEFAULT",
+                        "NEW"
+                      ]
+                    },
+                    "isActive": {
+                      "type": "boolean"
+                    },
+                    "needAdminReview": {
+                      "type": "boolean"
+                    },
+                    "authorEmail": {
+                      "type": "string"
+                    },
+                    "revisions": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "creationDate": {
+                      "type": "string",
+                      "format": "date"
+                    },
+                    "publicationDate": {
+                      "type": "string",
+                      "format": "date"
+                    },
+                    "updateDate": {
+                      "type": "string",
+                      "format": "date"
+                    },
+                    "ring": {
+                      "type": "string",
+                      "enum": [
+                        "HOLD",
+                        "OBSERVE",
+                        "TRIAL",
+                        "ADOPT"
+                      ]
+                    },
+                    "expectation": {
+                      "type": "string"
+                    },
+                    "quadrantId": {
+                      "type": "string"
+                    },
+                    "body": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/items/multiple": {
+      "post": {
+        "tags": [
+          "Items Controller"
+        ],
+        "summary": "Create multiple items all at once",
+        "description": "Create multiple items all at once, passing a list of objects\nOnly user with 'BDUSER' or 'ADMIN' role can create items\n",
+        "operationId": "createMultipleItems",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "required": [
+                    "expectation",
+                    "isActive",
+                    "quadrant",
+                    "ring",
+                    "title"
+                  ],
+                  "type": "object",
+                  "properties": {
+                    "isActive": {
+                      "type": "boolean"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "ring": {
+                      "type": "string",
+                      "enum": [
+                        "HOLD",
+                        "OBSERVE",
+                        "TRIAL",
+                        "ADOPT"
+                      ]
+                    },
+                    "expectation": {
+                      "type": "string",
+                      "enum": [
+                        "UNKNOWN",
+                        "ZERO_TWO",
+                        "TWO_FIVE",
+                        "FIVE_TEN"
+                      ]
+                    },
+                    "quadrant": {
+                      "type": "string",
+                      "enum": [
+                        "FIRST_QUADRANT",
+                        "SECOND_QUADRANT",
+                        "THIRD_QUADRANT",
+                        "FOURTH_QUADRANT"
+                      ]
+                    },
+                    "body": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string",
+                        "format": "uuid"
+                      },
+                      "flag": {
+                        "type": "string",
+                        "enum": [
+                          "CHANGED",
+                          "DEFAULT",
+                          "NEW"
+                        ]
+                      },
+                      "isActive": {
+                        "type": "boolean"
+                      },
+                      "needAdminReview": {
+                        "type": "boolean"
+                      },
+                      "authorEmail": {
+                        "type": "string"
+                      },
+                      "revisions": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      },
+                      "title": {
+                        "type": "string"
+                      },
+                      "creationDate": {
+                        "type": "string",
+                        "format": "date"
+                      },
+                      "publicationDate": {
+                        "type": "string",
+                        "format": "date"
+                      },
+                      "updateDate": {
+                        "type": "string",
+                        "format": "date"
+                      },
+                      "ring": {
+                        "type": "string",
+                        "enum": [
+                          "HOLD",
+                          "OBSERVE",
+                          "TRIAL",
+                          "ADOPT"
+                        ]
+                      },
+                      "expectation": {
+                        "type": "string"
+                      },
+                      "quadrantId": {
+                        "type": "string"
+                      },
+                      "body": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/quadrants/{quadrantId}": {
+      "get": {
+        "tags": [
+          "Quadrants Controller"
+        ],
+        "summary": "Get quadrant by id",
+        "operationId": "getQuadrantWithItem",
+        "parameters": [
+          {
+            "name": "quadrantId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "description": {
+                      "type": "string"
+                    },
+                    "items": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string",
+                            "format": "uuid"
+                          },
+                          "flag": {
+                            "type": "string",
+                            "enum": [
+                              "CHANGED",
+                              "DEFAULT",
+                              "NEW"
+                            ]
+                          },
+                          "title": {
+                            "type": "string"
+                          },
+                          "ring": {
+                            "type": "string",
+                            "enum": [
+                              "HOLD",
+                              "OBSERVE",
+                              "TRIAL",
+                              "ADOPT"
+                            ]
+                          },
+                          "expectation": {
+                            "type": "string"
+                          },
+                          "quadrantId": {
+                            "type": "string"
+                          },
+                          "isActive": {
+                            "type": "boolean"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "Quadrants Controller"
+        ],
+        "summary": "Update quadrant information",
+        "description": "Only users with 'ADMIN' role can update quadrant",
+        "operationId": "updateQuandrant",
+        "parameters": [
+          {
+            "name": "quadrantId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "title": {
+                    "type": "string"
+                  },
+                  "color": {
+                    "type": "string"
+                  },
+                  "position": {
+                    "type": "integer",
+                    "format": "int32"
+                  },
+                  "description": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "color": {
+                      "type": "string"
+                    },
+                    "position": {
+                      "type": "integer",
+                      "format": "int32"
+                    },
+                    "description": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/items/{itemId}": {
+      "get": {
+        "tags": [
+          "Items Controller"
+        ],
+        "summary": "Get item detail",
+        "operationId": "getItemDetail",
+        "parameters": [
+          {
+            "name": "itemId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "format": "uuid"
+                    },
+                    "flag": {
+                      "type": "string",
+                      "enum": [
+                        "CHANGED",
+                        "DEFAULT",
+                        "NEW"
+                      ]
+                    },
+                    "isActive": {
+                      "type": "boolean"
+                    },
+                    "needAdminReview": {
+                      "type": "boolean"
+                    },
+                    "authorEmail": {
+                      "type": "string"
+                    },
+                    "revisions": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "creationDate": {
+                      "type": "string",
+                      "format": "date"
+                    },
+                    "publicationDate": {
+                      "type": "string",
+                      "format": "date"
+                    },
+                    "updateDate": {
+                      "type": "string",
+                      "format": "date"
+                    },
+                    "ring": {
+                      "type": "string",
+                      "enum": [
+                        "HOLD",
+                        "OBSERVE",
+                        "TRIAL",
+                        "ADOPT"
+                      ]
+                    },
+                    "expectation": {
+                      "type": "string"
+                    },
+                    "quadrantId": {
+                      "type": "string"
+                    },
+                    "body": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "Items Controller"
+        ],
+        "summary": "Update item information",
+        "description": "Only users with 'BDUSER' or 'ADMIN' role can update item\n",
+        "operationId": "updateItem",
+        "parameters": [
+          {
+            "name": "itemId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "title": {
+                    "type": "string"
+                  },
+                  "ring": {
+                    "type": "string",
+                    "enum": [
+                      "HOLD",
+                      "OBSERVE",
+                      "TRIAL",
+                      "ADOPT"
+                    ]
+                  },
+                  "expectation": {
+                    "type": "string",
+                    "enum": [
+                      "UNKNOWN",
+                      "ZERO_TWO",
+                      "TWO_FIVE",
+                      "FIVE_TEN"
+                    ]
+                  },
+                  "quadrant": {
+                    "type": "string",
+                    "enum": [
+                      "FIRST_QUADRANT",
+                      "SECOND_QUADRANT",
+                      "THIRD_QUADRANT",
+                      "FOURTH_QUADRANT"
+                    ]
+                  },
+                  "body": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "format": "uuid"
+                    },
+                    "flag": {
+                      "type": "string",
+                      "enum": [
+                        "CHANGED",
+                        "DEFAULT",
+                        "NEW"
+                      ]
+                    },
+                    "isActive": {
+                      "type": "boolean"
+                    },
+                    "needAdminReview": {
+                      "type": "boolean"
+                    },
+                    "authorEmail": {
+                      "type": "string"
+                    },
+                    "revisions": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "creationDate": {
+                      "type": "string",
+                      "format": "date"
+                    },
+                    "publicationDate": {
+                      "type": "string",
+                      "format": "date"
+                    },
+                    "updateDate": {
+                      "type": "string",
+                      "format": "date"
+                    },
+                    "ring": {
+                      "type": "string",
+                      "enum": [
+                        "HOLD",
+                        "OBSERVE",
+                        "TRIAL",
+                        "ADOPT"
+                      ]
+                    },
+                    "expectation": {
+                      "type": "string"
+                    },
+                    "quadrantId": {
+                      "type": "string"
+                    },
+                    "body": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/items/{itemId}/publish": {
+      "patch": {
+        "tags": [
+          "Items Controller"
+        ],
+        "summary": "Publish item",
+        "description": "Only users with 'ADMIN' role can publish item\n",
+        "operationId": "publishItem",
+        "parameters": [
+          {
+            "name": "itemId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "format": "uuid"
+                    },
+                    "flag": {
+                      "type": "string",
+                      "enum": [
+                        "CHANGED",
+                        "DEFAULT",
+                        "NEW"
+                      ]
+                    },
+                    "isActive": {
+                      "type": "boolean"
+                    },
+                    "needAdminReview": {
+                      "type": "boolean"
+                    },
+                    "authorEmail": {
+                      "type": "string"
+                    },
+                    "revisions": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "creationDate": {
+                      "type": "string",
+                      "format": "date"
+                    },
+                    "publicationDate": {
+                      "type": "string",
+                      "format": "date"
+                    },
+                    "updateDate": {
+                      "type": "string",
+                      "format": "date"
+                    },
+                    "ring": {
+                      "type": "string",
+                      "enum": [
+                        "HOLD",
+                        "OBSERVE",
+                        "TRIAL",
+                        "ADOPT"
+                      ]
+                    },
+                    "expectation": {
+                      "type": "string"
+                    },
+                    "quadrantId": {
+                      "type": "string"
+                    },
+                    "body": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/items/{itemId}/archive": {
+      "patch": {
+        "tags": [
+          "Items Controller"
+        ],
+        "summary": "Archive item",
+        "description": "Only item author or user with 'ADMIN' role can archive item\n",
+        "operationId": "archiveItem",
+        "parameters": [
+          {
+            "name": "itemId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "format": "uuid"
+                    },
+                    "flag": {
+                      "type": "string",
+                      "enum": [
+                        "CHANGED",
+                        "DEFAULT",
+                        "NEW"
+                      ]
+                    },
+                    "isActive": {
+                      "type": "boolean"
+                    },
+                    "needAdminReview": {
+                      "type": "boolean"
+                    },
+                    "authorEmail": {
+                      "type": "string"
+                    },
+                    "revisions": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "creationDate": {
+                      "type": "string",
+                      "format": "date"
+                    },
+                    "publicationDate": {
+                      "type": "string",
+                      "format": "date"
+                    },
+                    "updateDate": {
+                      "type": "string",
+                      "format": "date"
+                    },
+                    "ring": {
+                      "type": "string",
+                      "enum": [
+                        "HOLD",
+                        "OBSERVE",
+                        "TRIAL",
+                        "ADOPT"
+                      ]
+                    },
+                    "expectation": {
+                      "type": "string"
+                    },
+                    "quadrantId": {
+                      "type": "string"
+                    },
+                    "body": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/quadrants/{quadrantId}/items": {
+      "get": {
+        "tags": [
+          "Quadrants Controller"
+        ],
+        "summary": "Get all items from a specific quadrant",
+        "operationId": "getQuadrantItems",
+        "parameters": [
+          {
+            "name": "quadrantId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string",
+                        "format": "uuid"
+                      },
+                      "flag": {
+                        "type": "string",
+                        "enum": [
+                          "CHANGED",
+                          "DEFAULT",
+                          "NEW"
+                        ]
+                      },
+                      "title": {
+                        "type": "string"
+                      },
+                      "ring": {
+                        "type": "string",
+                        "enum": [
+                          "HOLD",
+                          "OBSERVE",
+                          "TRIAL",
+                          "ADOPT"
+                        ]
+                      },
+                      "expectation": {
+                        "type": "string"
+                      },
+                      "quadrantId": {
+                        "type": "string"
+                      },
+                      "isActive": {
+                        "type": "boolean"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/items/review": {
+      "get": {
+        "tags": [
+          "Items Controller"
+        ],
+        "summary": "Get items for admin review",
+        "operationId": "getItemsAdminReview",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string",
+                        "format": "uuid"
+                      },
+                      "title": {
+                        "type": "string"
+                      },
+                      "authorEmail": {
+                        "type": "string"
+                      },
+                      "isActive": {
+                        "type": "boolean"
+                      },
+                      "needAdminReview": {
+                        "type": "boolean"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/items/me": {
+      "get": {
+        "tags": [
+          "Items Controller"
+        ],
+        "summary": "Get items related to user",
+        "description": "In case user has ADMIN role, it will return all items, otherwise will return only the items related to them",
+        "operationId": "getItemsMe",
+        "parameters": [
+          {
+            "name": "sortBy",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "all"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string",
+                        "format": "uuid"
+                      },
+                      "title": {
+                        "type": "string"
+                      },
+                      "authorEmail": {
+                        "type": "string"
+                      },
+                      "quadrantId": {
+                        "type": "string"
+                      },
+                      "isActive": {
+                        "type": "boolean"
+                      },
+                      "needAdminReview": {
+                        "type": "boolean"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/items/all": {
+      "get": {
+        "tags": [
+          "Items Controller"
+        ],
+        "summary": "Get all items for radar view",
+        "operationId": "getAllItems",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string",
+                        "format": "uuid"
+                      },
+                      "flag": {
+                        "type": "string",
+                        "enum": [
+                          "CHANGED",
+                          "DEFAULT",
+                          "NEW"
+                        ]
+                      },
+                      "title": {
+                        "type": "string"
+                      },
+                      "ring": {
+                        "type": "string",
+                        "enum": [
+                          "HOLD",
+                          "OBSERVE",
+                          "TRIAL",
+                          "ADOPT"
+                        ]
+                      },
+                      "expectation": {
+                        "type": "string"
+                      },
+                      "quadrantId": {
+                        "type": "string"
+                      },
+                      "isActive": {
+                        "type": "boolean"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
