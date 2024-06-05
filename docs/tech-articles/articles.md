@@ -2,7 +2,7 @@
 sidebar_position: 1
 ---
 
-# NEWS: 📰
+# ARTICLES: 📰
 
 ### POST news:
 Endpoint: `/news`

@@ -10,12 +10,12 @@ type FeatureItem = {
 
 const FeatureList: FeatureItem[] = [
   {
-    title: 'Tech-News',
+    title: 'Tech-Articles',
     Svg: require('@site/static/img/news.svg').default,
     description: (
       <>    
-        Tech-News is a resource developed for the BD/INN team
-        publish news about technologies and projects that are working 
+        Tech-Articles is a resource developed for the BD/INN team
+        publish articles about technologies and projects that are working 
         and can contribute to the development community.
       </>
     ),

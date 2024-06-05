@@ -5,10 +5,10 @@ import type * as Preset from '@docusaurus/preset-classic';
 const config: Config = {
   title: 'BDTechCenter',
   tagline: 'Bosch Digital technology centralization platform',
-  favicon: 'img/logo.ico',
+  favicon: 'img/logo.png',
 
   // Set the production url of your site here
-  url: 'http://localhost:3000',
+  url: 'https://bdtechcenter.github.io',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/',
@@ -16,9 +16,9 @@ const config: Config = {
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
   organizationName: 'bdtechcenter', // Usually your GitHub org/user name.
-  projectName: 'front-end', // Usually your repo name.
+  projectName: 'BDTechCenter', // Usually your repo name.
 
-  onBrokenLinks: 'throw',
+  onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'warn',
 
   // Even if you don't use internationalization, you can use this field to set
@@ -61,7 +61,7 @@ const config: Config = {
       title: 'BDTechCenter',
       logo: {
         alt: 'BDTechCenter Logo',
-        src: 'img/logo.svg',
+        src: 'img/logo.png',
       },
       items: [
         {
@@ -85,8 +85,8 @@ const config: Config = {
           title: 'Docs',
           items: [
             {
-              label: 'Tutorial',
-              to: '/docs/intro',
+              label: 'docs',
+              to: '/docs/technical-content/software-requirements',
             },
           ],
         },
